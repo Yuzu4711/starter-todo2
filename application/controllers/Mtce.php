@@ -15,14 +15,8 @@ class Mtce extends Application
 	private function show_page($tasks)
 	{
     	$role = $this->session->userdata('userrole');
+
 		$this->data['pagetitle'] = 'TODO List Maintenance ('. $role . ')';
-
-		$tasks = $this->tasks->all(); // get all the tasks
-
-       	// substitute the status name
-		foreach ($tasks as $task)
-		        if (!empty($task->status))
-		                $task->status = $this->statuses->get($task->status)->name;
 		// build the task presentation output
 		$result = ''; // start with an empty array      
 		foreach ($tasks as $task)
